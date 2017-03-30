@@ -8,7 +8,7 @@ The Stackdriver products available in GCP provide a complete monitoring and logg
 
 
 ## GCP and Stackdriver Setup
-Assuming you have a GCP account already, Dino has put together great instructions on how to configure an application and Stackdriver in GCP.  He has also created some example proxies that will do the initial connection from the proxy to Stackdriver and send example log messages.  **Follow these instructions first.**  This guide is to enhance his examples and show how it could be configured for project use.
+Assuming you have a GCP account already, Dino has put together great instructions on how to configure Stackdriver in GCP.  He has also created some example proxies that will do the initial connection from the proxy to Stackdriver and send example log messages.  **Follow these instructions first.**  This guide is to enhance his examples and show how it could be configured for project use.
 https://community.apigee.com/articles/38004/logging-from-apigee-edge-api-proxies-to-a-saas-log.html
 
 ## Monitoring
@@ -140,7 +140,9 @@ Payload:
 ```
 
 Response: (There is no response payload for a success.  An error will return an error payload.)
+```json
 {}
+```
 
 Payload Information:
 
