@@ -77,19 +77,19 @@ A common requirement is to be able to log messages from the API Proxy.  These me
 https://cloud.google.com/logging/docs/basic-concepts
 
 ### Sending A Log Message To Stackdriver Logging
-Dino’s Stackdriver article provides a great description and example of how to send a basic text message to the logging API.  (Please review if you haven’t already)  In short, Stackdriver does not offer a “MessageLogging” or “SysLog” port to send messages to - however, there is a REST based API that messages can be sent to asynchronously.  It is recommended to use Edge’s Javascript HTTP client to “fire and forget” the log messages.  
+Dino’s Stackdriver article provides a great description and example of how to send a basic text message to the logging API.  (Please review if you haven’t already)  In short, Stackdriver does not offer a "MessageLogging" or "SysLog" port to send messages to - however, there is a REST based API that messages can be sent to asynchronously.  It is recommended to use Edge’s Javascript HTTP client to "fire and forget" the log messages.  
 
-The documentation for the “write log” API is available here: https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/write
+The documentation for the "write log" API is available here: https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/write
 
-The documentation for the “LogEntry” object in the logging payload is available here: https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
+The documentation for the "LogEntry" object in the logging payload is available here: https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
 
 The documentation gives you a better idea of what data can be sent to the logging API.  Two fields are important to highlight as they will likely contain custom information per log.
 
 #### Defining jsonPayload
-In projects, it is preferred to send a more detailed log message to the logging API.  Using the “jsonPayload” field in the logging API will allow you to pass in much more relevant information to the call.  This can be put into a shared flow, where each call will have the same set of data, such as basepath, parameters, developer, app, product, etc.  This payload can contain whatever you want.  In the console, this “jsonPayload” field can be used to search for specific attributes that were recorded in the log entry.  See the LogEntry object for more information.
+In projects, it is preferred to send a more detailed log message to the logging API.  Using the "jsonPayload" field in the logging API will allow you to pass in much more relevant information to the call.  This can be put into a shared flow, where each call will have the same set of data, such as basepath, parameters, developer, app, product, etc.  This payload can contain whatever you want.  In the console, this "jsonPayload" field can be used to search for specific attributes that were recorded in the log entry.  See the LogEntry object for more information.
 
 #### Setting severity
-It is important to set the “severity” of the log message.  The options available are: DEFAULT, DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY
+It is important to set the "severity" of the log message.  The options available are: DEFAULT, DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY
 https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity
 
 #### API Call Example
@@ -163,9 +163,9 @@ partialSuccess - if an error, still write?  or not?
 
 
 #### Use in Proxies
-In the example outlined in the link below, the logic to get the access token, cache, and make log calls to Stackdriver is encapsulated into a proxy “Shared Flow” (borrowed from Dino’s example).  By setting some logging flow variables and calling the shared flow, the shared flow will send a log message to the logging API.  The payload will contain the message and severity set in the logging flow variables, plus the standard JSON payload containing org, env, error message, developer, etc (see example in the section above).
+In the example outlined in the link below, the logic to get the access token, cache, and make log calls to Stackdriver is encapsulated into a proxy "Shared Flow" (borrowed from Dino’s example).  By setting some logging flow variables and calling the shared flow, the shared flow will send a log message to the logging API.  The payload will contain the message and severity set in the logging flow variables, plus the standard JSON payload containing org, env, error message, developer, etc (see example in the section above).
 
-This “Stackdriver Logging” shared flow can be used at any time to send any kind of log message to Stackdriver.  This shared flow is also incorporated into the “Common Error Handling” shared flow.  This way, any error that is detected through the FaultRules or DefaultFaultRule will automatically be logged to Stackdriver.  
+This "Stackdriver Logging" shared flow can be used at any time to send any kind of log message to Stackdriver.  This shared flow is also incorporated into the "Common Error Handling" shared flow.  This way, any error that is detected through the FaultRules or DefaultFaultRule will automatically be logged to Stackdriver.  
 
 See example of this here:
 
@@ -190,7 +190,7 @@ All logs sent to Stackdriver can be viewed through the console.  Logs can be fil
 
 
 ### Exporting Log Data
-There are several different ways to export log data, highlighted in the documentation.  You can also create “sinks” - where log messages are filtered and sent to another GCP product like “CloudStorage”, “BigQuery” or “Pub/Sub”.
+There are several different ways to export log data, highlighted in the documentation.  You can also create "sinks" - where log messages are filtered and sent to another GCP product like "CloudStorage", "BigQuery" or "Pub/Sub".
 https://cloud.google.com/logging/docs/export/configure_export_v2
 
 ### Creating Logging Metrics
@@ -205,7 +205,7 @@ There are also some predefined log metrics that you can leverage for alerts.
 https://cloud.google.com/logging/docs/view/logs_based_metrics#system-metrics
 
 ### Add Log Metrics to Dashboard
-Similar to how you added monitoring widgets to your dashboard, log metric widgets can be added as well.  Click the “Add Chart” button on your dashboard and choose the log metric and other options.  
+Similar to how you added monitoring widgets to your dashboard, log metric widgets can be added as well.  Click the "Add Chart" button on your dashboard and choose the log metric and other options.  
 https://cloud.google.com/monitoring/quickstart-lamp#gs-dashboards
 
 ### Setting Access Control
