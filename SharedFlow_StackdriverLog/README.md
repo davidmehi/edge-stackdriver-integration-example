@@ -7,7 +7,7 @@ This shared flow is meant to be a common way to send any kind of log message to 
 ## Deployment Instructons ##
 To deploy, zip the folder "sharedflowbundle" and upload as a new shared flow.  Once uploaded, deploy to a environment.
 
-** Note that for this shared flow to work, it must be deployed to a "paid org".  It will not work on a "trial org".  This shared flow relies on a Java Callout policy and multiple JAR files.  Java Callouts are not available on the trial version of Apigee. **
+**Note that for this shared flow to work, it must be deployed to a "paid org".  It will not work on a "trial org".  This shared flow relies on a Java Callout policy and multiple JAR files.  Java Callouts are not available on the trial version of Apigee.**
 
 See this link for more information about shared flows work and how to deploy shared flows.  http://docs.apigee.com/api-services/content/shared-flows
 
