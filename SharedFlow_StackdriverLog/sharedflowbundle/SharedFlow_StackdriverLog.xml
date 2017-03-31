@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="SharedFlow_StackdriverLog">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1490711154300</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description>Shared Flow for logging messages to StackDriver.  Set the message (flow.log.message) and severity (flow.log.severity) variables and call this flow.  Error handling will call it automatically</Description>
+    <DisplayName>SharedFlow_FaultRulesHanding_StackdriverLog</DisplayName>
+    <LastModifiedAt>1490711592382</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <Policies>
+        <Policy>AM-CleanResponseHeaders</Policy>
+        <Policy>AM-Set-Stackdriver-Token</Policy>
+        <Policy>AssignMessageSetLogMessage</Policy>
+        <Policy>Cache-Get-Stackdriver-Token</Policy>
+        <Policy>Cache-Put-Stackdriver-Token</Policy>
+        <Policy>Extract-Stackdriver-AccessToken</Policy>
+        <Policy>JS-Adjust-Expiry</Policy>
+        <Policy>JS-Log-To-Stackdriver-2</Policy>
+        <Policy>JWT-Generate-Stackdriver-JWT</Policy>
+        <Policy>JavaScriptDebugVariables</Policy>
+        <Policy>JavaScriptSetLogMessage</Policy>
+        <Policy>KVM-Get-Stackdriver-PrivateKey</Policy>
+        <Policy>KVM-Get-Stackdriver-Settings</Policy>
+        <Policy>RF-No-AccessToken</Policy>
+        <Policy>SC-Log-To-Stackdriver</Policy>
+        <Policy>SC-Obtain-Stackdriver-AccessToken</Policy>
+    </Policies>
+    <Resources>
+        <Resource>java://apigee-edge-callout-jwt-signed-1.0.5.jar</Resource>
+        <Resource>java://commons-lang3-3.4.jar</Resource>
+        <Resource>java://guava-18.0.jar</Resource>
+        <Resource>java://json-smart-1.3.jar</Resource>
+        <Resource>java://nimbus-jose-jwt-3.10.jar</Resource>
+        <Resource>java://not-yet-commons-ssl-0.3.11.jar</Resource>
+        <Resource>jsc://JavaScript.DebugVariables.js</Resource>
+        <Resource>jsc://JavaScript.SetLogMessage.js</Resource>
+        <Resource>jsc://adjust-Expiry.js</Resource>
+        <Resource>jsc://log-To-Stackdriver-2.js</Resource>
+        <Resource>jsc://messageTemplate.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <validate>false</validate>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

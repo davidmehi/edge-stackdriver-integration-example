@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>JavaScriptDebugVariables</Name>
+    </Step>
+    <Step>
+        <Name>AssignMessage.Set400ErrorVariables</Name>
+        <Condition>
+                    (fault.name = "ExceededContainerDepth") or 
+                    (fault.name = "ExceededObjectEntryCount") or 
+                    (fault.name = "ExceededArrayElementCount") or 
+                    (fault.name = "ExceededObjectEntryNameLength") or 
+                    (fault.name = "ExceededStringValueLength") or 
+                    (fault.name = "SourceUnavailable") or 
+                    (fault.name = "NonMessageVariable") or 
+                    (fault.name = "ExecutionFailed")
+                </Condition>
+    </Step>
+    <Step>
+        <Name>AssignMessage.Set401ErrorVariables</Name>
+        <Condition>
+                (fault.name = "ApiKeyNotApproved") or 
+                (fault.name = "CompanyStatusNotActive") or 
+                (fault.name = "DeveloperStatusNotActive") or 
+                (fault.name = "FailedToResolveAPIKey") or 
+                (fault.name = "InvalidApiKey") or  
+                (fault.name = "InvalidApiKeyForGivenResource") or 
+                (fault.name = "app_not_approved")
+                </Condition>
+    </Step>
+    <Step>
+        <Name>AssignMessage.Set401ErrorVariables</Name>
+        <Condition>
+                    (fault.name = "FailedToResolveAccessToken") or 
+                    (fault.name = "FailedToResolveToken") or 
+                    (fault.name = "FailedToResolveAuthorizationCode") or 
+                    (fault.name = "InsufficientScope") or 
+                    (fault.name = "InvalidOperation")
+                </Condition>
+    </Step>
+    <Step>
+        <Name>AssignMessage.Set429ErrorVariables</Name>
+        <Condition>
+                    (fault.name = "SpikeArrestViolation") or 
+                    (fault.name = "InvalidMessageWeight") or 
+                    (fault.name = "ErrorLoadingProperties") or 
+                    (fault.name = "InvalidAllowedRate") or 
+                    (fault.name = "FailedToResolveSpikeArrestRate")
+                </Condition>
+    </Step>
+    <Step>
+        <Name>AssignMessage.Set429ErrorVariables</Name>
+        <Condition>
+                (fault.name = "QuotaViolation") or 
+                (fault.name = "InvalidMessageWeight") or 
+                (fault.name = "InvalidQuotaInterval") or 
+                (fault.name = "FailedToResolveQuota\IntervalReference") or 
+                (fault.name = "FailedToResolveQuota\IntervalTimeUnitReference") or 
+                (fault.name = "InvalidQuotaTimeUnit")
+            </Condition>
+    </Step>
+    <Step>
+        <Condition>flow.error.code = null</Condition>
+        <Name>AssignMessage.Set500ErrorVariables</Name>
+    </Step>
+    <Step>
+        <Name>AssignMessageSetLogVariables</Name>
+    </Step>
+    <Step>
+        <Name>SharedFlowStackdriverLog</Name>
+    </Step>
+    <Step>
+        <Name>RaiseFault.DefaultErrorResponse</Name>
+    </Step>
+</SharedFlow>

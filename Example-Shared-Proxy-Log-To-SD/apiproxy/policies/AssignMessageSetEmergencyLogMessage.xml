@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessageSetEmergencyLogMessage">
+    <DisplayName>AssignMessage.SetEmergencyLogMessage</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>flow.log.message</Name>
+        <Value>EMERGENCY - request should not have come through - contact management immediately</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.log.severity</Name>
+        <Value>EMERGENCY</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

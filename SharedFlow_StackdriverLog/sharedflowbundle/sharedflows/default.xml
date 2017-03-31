@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>JavaScriptDebugVariables</Name>
+    </Step>
+    <!-- Log message to Stackdriver first -->
+    <Step>
+        <!-- things like the projectid, log id, and client email (issuer) -->
+        <Name>KVM-Get-Stackdriver-Settings</Name>
+    </Step>
+    <Step>
+        <!-- see if there is a viable token in cache -->
+        <Name>Cache-Get-Stackdriver-Token</Name>
+    </Step>
+    <Step>
+        <!-- no token? get the private key, we're gonna need it -->
+        <Name>KVM-Get-Stackdriver-PrivateKey</Name>
+        <Condition>stackdriver.token = null</Condition>
+    </Step>
+    <Step>
+        <!-- no token? generate a JWT to send to the Google OAuth service -->
+        <Name>JWT-Generate-Stackdriver-JWT</Name>
+        <Condition>stackdriver.token = null</Condition>
+    </Step>
+    <Step>
+        <!-- no token? send the request to the Google OAuth service -->
+        <Name>SC-Obtain-Stackdriver-AccessToken</Name>
+        <Condition>stackdriver.token = null</Condition>
+    </Step>
+    <Step>
+        <!-- no token? extract the new token and expiry from the response from the Google OAuth service -->
+        <Name>Extract-Stackdriver-AccessToken</Name>
+        <Condition>stackdriver.token = null</Condition>
+    </Step>
+    <Step>
+        <!-- no token? adjust the expiry downward to be conservative with cache TTL -->
+        <Name>JS-Adjust-Expiry</Name>
+        <Condition>stackdriver.token = null</Condition>
+    </Step>
+    <Step>
+        <!-- no token? check for failure (no new token) -->
+        <Name>RF-No-AccessToken</Name>
+        <Condition>(stackdriver.token = null) and (stackdriver.newtoken = null)</Condition>
+    </Step>
+    <Step>
+        <!-- new token? insert it into cache -->
+        <Name>Cache-Put-Stackdriver-Token</Name>
+        <Condition>(stackdriver.token = null) and (stackdriver.newtoken != null)</Condition>
+    </Step>
+    <Step>
+        <!-- new token? copy it to the context variable we want -->
+        <Name>AM-Set-Stackdriver-Token</Name>
+        <Condition>stackdriver.token = null</Condition>
+    </Step>
+    <Step>
+        <Name>JavaScriptSetLogMessage</Name>
+    </Step>
+    <Step>
+        <!-- finally, invoke Stackdriver to emit a log message using a JS Callout for async behavior -->
+        <!-- <Name>JS-Log-To-Stackdriver</Name> -->
+        <Name>JS-Log-To-Stackdriver-2</Name>
+        <Condition>request.header.usesc = null</Condition>
+    </Step>
+    <Step>
+        <!-- or conditionally, invoke stackdriver with ServiceCallout to wait for a response-->
+        <Name>SC-Log-To-Stackdriver</Name>
+        <Condition>request.header.usesc != null</Condition>
+    </Step>
+    <Step>
+        <Name>AM-CleanResponseHeaders</Name>
+    </Step>
+    <!-- End of logging policies -->
+</SharedFlow>

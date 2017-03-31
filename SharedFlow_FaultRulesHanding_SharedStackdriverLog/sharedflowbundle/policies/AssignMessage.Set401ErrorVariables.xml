@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage.Set401ErrorVariables">
+    <DisplayName>AssignMessage.Set401ErrorVariables</DisplayName>
+    <AssignVariable>
+        <Name>flow.error.code</Name>
+        <Value>401-01</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.message</Name>
+        <Value>api key is invalid</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.info</Name>
+        <Value>https://docs.developer.com</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.status</Name>
+        <Value>401</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.reason</Name>
+        <Value>Unauthorized</Value>
+    </AssignVariable>
+</AssignMessage>

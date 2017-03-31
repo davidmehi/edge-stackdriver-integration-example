@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JavaScriptDebug">
+    <DisplayName>JavaScript.Debug</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://JavaScript.Debug.js</ResourceURL>
+</Javascript>

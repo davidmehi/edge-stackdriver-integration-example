@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="Example-Shared-Proxy-Log-To-SD">
+    <Basepaths>/example-shared-proxy</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1490711951462</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description>This example uses the shared flow that logs all error messages to Stackdriver directly.</Description>
+    <DisplayName>Example-Shared-Proxy</DisplayName>
+    <LastModifiedAt>1490968155774</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <Policies>
+        <Policy>AssignMessageSetEmergencyLogMessage</Policy>
+        <Policy>AssignMessageSetPreflowLogMessage</Policy>
+        <Policy>AssignMessageSetResponse</Policy>
+        <Policy>FlowCalloutFaultRulesHandling_SharedStackdriverLog</Policy>
+        <Policy>FlowCalloutStackdriverLog</Policy>
+        <Policy>JavaScriptDebug</Policy>
+        <Policy>SpikeArrest</Policy>
+        <Policy>VerifyAPIKey</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JavaScript.Debug.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate>false</validate>
+</APIProxy>

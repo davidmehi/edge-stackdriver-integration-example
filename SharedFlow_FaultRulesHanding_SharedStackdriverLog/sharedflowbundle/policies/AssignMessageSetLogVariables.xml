@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessageSetLogVariables">
+    <DisplayName>AssignMessage.SetLogVariables</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>flow.log.message</Name>
+        <Ref>flow.error.message</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.log.severity</Name>
+        <Value>ERROR</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

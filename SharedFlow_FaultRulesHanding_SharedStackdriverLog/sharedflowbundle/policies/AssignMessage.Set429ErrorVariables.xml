@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage.Set429ErrorVariables">
+    <DisplayName>AssignMessage.Set429ErrorVariables</DisplayName>
+    <AssignVariable>
+        <Name>flow.error.code</Name>
+        <Value>429.02.001</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.message</Name>
+        <Value>rate limit has been exhausted</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.info</Name>
+        <Value>https://developers.com</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.status</Name>
+        <Value>429</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.reason</Name>
+        <Value>Too Many Requests</Value>
+    </AssignVariable>
+</AssignMessage>

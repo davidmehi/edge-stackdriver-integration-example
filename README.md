@@ -1,6 +1,8 @@
 # edge-stackdriver-integration-example
 This is an example of how to use GCP Stackdriver for logging and monitoring of Edge proxies
 
+* This example builds on a [previous example](https://community.apigee.com/articles/38004/logging-from-apigee-edge-api-proxies-to-a-saas-log.html) done by Dino Chiesa - please review and implement before trying to run these proxies. *
+
 
 # Stackdriver Monitoring and Logging For Edge
 

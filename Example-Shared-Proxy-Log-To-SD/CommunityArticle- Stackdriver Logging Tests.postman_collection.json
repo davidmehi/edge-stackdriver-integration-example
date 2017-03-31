@@ -1,0 +1,80 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CommunityArticle: Stackdriver Logging Tests",
+		"_postman_id": "bf06dd26-e7c6-c719-eb45-ac8dcdf4da0c",
+		"description": "These tests are meant to be used in conjuction with the Stackdriver logging proxy example.  \n\nhttps://github.com/davidmehi/edge-stackdriver-integration-example\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "StackDriver API JSON Payload: https://logging.googleapis.com/v2/entries:write",
+			"request": {
+				"url": "https://logging.googleapis.com/v2/entries:write",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {stackdriver.token}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"logName\": \"projects/{project-name}/logs/syslog\",\n\t\"resource\": {\n\t\t\"type\": \"api\",\n\t\t\"labels\": {}\n\t},\n\t\"labels\": {\n\t\t\"flavor\": \"test\"\n\t},\n\t\"entries\": [{\n\t\t\"severity\": \"CRITICAL\",\n\t\t\"jsonPayload\": {\n\t\t\t\"message\":\"Message sent from curl.\",\n\t\t\t\"status\":\"500\",\n\t\t\t\"reason\":\"Internal Server Error\",\n\t\t\t\"errorStatusCode\":\"500\", \n\t\t\t\"errorReason\":\"Internal Server Error\", \n\t\t\t\"errorMessage\":\"internal server error\", \n\t\t\t\"developer\":null,\n\t\t\t\"app\": null,\n\t\t\t\"product\": null,\n\t\t\t\"environment\": \"{env}\",\n\t\t\t\"org\": \"{org}\",\n\t\t\t\"apiproxy.name\": \"Example-Shared-Proxy-SDLog\", \n\t\t\t\"apiproxy.revision\":\"1\", \n\t\t\t\"proxy.basepath\":\"/example-shared-proxy-sdlog\", \n\t\t\t\"proxy.pathsuffix\":\"/500error\", \n\t\t\t\"request.queryParams\":null, \n\t\t\t\"request.uri\":\"/example-shared-proxy-sdlog/500error\", \n\t\t\t\"request.verb\":\"GET\", \n\t\t\t\"proxy.client.ip\":\"35.128.9.15\"\n\t\t\t}\n\t}],\n\t\"partialSuccess\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "SharedFlow_Log2SD",
+			"request": {
+				"url": "https://{api-hostname}/example-shared-proxy-log2sd",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "SharedFlow_Log2SD 401",
+			"request": {
+				"url": "https://{api-hostname}/example-shared-proxy-log2sd/401error",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "SharedFlow_Log2SD 500 key",
+			"request": {
+				"url": "https://{api-hostname}/example-shared-proxy-log2sd/500errorkey?apikey=3eOQO5DmmbyTMRvOXbAl68K39aGf02D0",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "SharedFlow_Log2SD Emergency",
+			"request": {
+				"url": "https://{api-hostname}/example-shared-proxy-log2sd/emergency?apikey=3eOQO5DmmbyTMRvOXbAl68K39aGf02D0",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
